@@ -1,0 +1,20 @@
+---
+// src/components/ReadingProgress.astro
+---
+<div class="read-progress" aria-hidden="true"></div>
+<style>
+  .read-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0;
+    background: var(--ink); z-index: 100;
+  }
+</style>
+<script>
+  const bar = document.querySelector('.read-progress') as HTMLElement;
+  const update = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? `${(h.scrollTop / max) * 100}%` : '0';
+  };
+  addEventListener('scroll', update, { passive: true });
+  update();
+</script>

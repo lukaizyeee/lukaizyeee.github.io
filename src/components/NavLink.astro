@@ -1,0 +1,21 @@
+---
+// src/components/NavLink.astro
+interface Props { href: string; label: string; active?: boolean; }
+const { href, label, active = false } = Astro.props;
+---
+<a class:list={['nav-link', { active }]} href={href}>{label}</a>
+<style>
+  .nav-link {
+    font-size: 13.5px; font-weight: 550; color: var(--text-2);
+    position: relative; padding-bottom: 3px;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: 0;
+    height: var(--line); width: 100%; background: var(--ink);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .28s var(--ease-out);
+  }
+  .nav-link:hover::after, .nav-link.active::after {
+    transform: scaleX(1); transform-origin: left;
+  }
+</style>

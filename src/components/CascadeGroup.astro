@@ -1,0 +1,16 @@
+---
+// src/components/CascadeGroup.astro
+---
+<div class="cascade"><slot /></div>
+<style>
+  @keyframes rise-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .cascade > :global(*) { opacity: 0; animation: rise-in .7s var(--ease-out) forwards; }
+  /* 阶梯延迟：.05 .18 .32 .46 .62 .78s，超过 6 个的子元素统一 .78s */
+  .cascade > :global(*:nth-child(1)) { animation-delay: .05s; }
+  .cascade > :global(*:nth-child(2)) { animation-delay: .18s; }
+  .cascade > :global(*:nth-child(3)) { animation-delay: .32s; }
+  .cascade > :global(*:nth-child(4)) { animation-delay: .46s; }
+  .cascade > :global(*:nth-child(5)) { animation-delay: .62s; }
+  .cascade > :global(*:nth-child(n+6)) { animation-delay: .78s; }
+  @media (prefers-reduced-motion: reduce) { .cascade > :global(*) { opacity: 1; animation: none; } }
+</style>

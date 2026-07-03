@@ -1,0 +1,20 @@
+---
+// src/components/CornerFrame.astro
+---
+<div class="corner-frame">
+  <i></i><i></i><i></i><i></i>
+  <slot />
+</div>
+<style>
+  .corner-frame { position: relative; padding: 24px 28px; }
+  .corner-frame i {
+    position: absolute; width: 18px; height: 18px;
+    border: 0 solid var(--ink);
+    transition: all .3s var(--ease-out);
+  }
+  .corner-frame i:nth-of-type(1) { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+  .corner-frame i:nth-of-type(2) { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+  .corner-frame i:nth-of-type(3) { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+  .corner-frame i:nth-of-type(4) { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+  .corner-frame:hover i { width: 100%; height: 100%; }
+</style>
