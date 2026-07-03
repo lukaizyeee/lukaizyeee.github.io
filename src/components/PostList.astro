@@ -1,0 +1,33 @@
+---
+// src/components/PostList.astro
+import type { CollectionEntry } from 'astro:content';
+import type { Locale } from '../i18n/ui';
+interface Props { posts: CollectionEntry<'blog'>[]; locale: Locale; }
+const { posts, locale } = Astro.props;
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+---
+<ul class="post-list">
+  {posts.map((p) => (
+    <li>
+      <a href={`/blog/${p.id}/`}>
+        <span class="title">{p.data.title}</span>
+        <span class="meta">
+          <time datetime={fmt(p.data.date)}>{fmt(p.data.date)}</time>
+          <span class="mono-chip mono-chip--outline">{p.data.lang === 'en' ? 'EN' : '中'}</span>
+          {p.data.tags.map((tg) => <span class="mono-chip">{tg}</span>)}
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>
+<style>
+  .post-list { list-style: none; padding: 0; display: grid; gap: 4px; }
+  .post-list a {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 12px 8px; border-radius: 8px; transition: background .2s var(--ease-out);
+  }
+  .post-list a:hover { background: var(--card); }
+  .post-list a:hover .title { text-decoration: underline; }
+  .title { font-weight: 600; }
+  .meta { display: flex; gap: 8px; align-items: baseline; font-size: 13px; color: var(--text-3); flex-shrink: 0; }
+</style>

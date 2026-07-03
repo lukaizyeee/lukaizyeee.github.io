@@ -1,0 +1,13 @@
+---
+// src/pages/blog/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionRule from '../../components/SectionRule.astro';
+import PostList from '../../components/PostList.astro';
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout locale="en" title="Blog — Zihao Zhang" description="Notes on AI systems, OS, and engineering." altHref="/zh/blog">
+  <SectionRule no="02" title="Blog" />
+  <PostList posts={posts} locale="en" />
+</BaseLayout>

@@ -4,6 +4,11 @@ set -euo pipefail
 EXPECTED=(
   index.html
   dev/components/index.html
+  blog/index.html
+  zh/blog/index.html
+  blog/hello-astro/index.html
+  blog/di-yi-pian/index.html
+  rss.xml
 )
 missing=0
 for f in "${EXPECTED[@]}"; do

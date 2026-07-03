@@ -1,0 +1,36 @@
+---
+// src/pages/blog/[slug].astro
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
+import { t, localePath } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+const lang = post.data.lang;
+const tr = t(lang);
+---
+<BaseLayout locale={lang} title={`${post.data.title} — Zihao Zhang`} description={post.data.description}
+  altHref={localePath(lang === 'en' ? 'zh' : 'en', '/blog')}>
+  <ReadingProgress />
+  <article class="post">
+    <a class="back" href={localePath(lang, '/blog')}>← {tr('post.back')}</a>
+    <h1>{post.data.title}</h1>
+    <p class="meta">
+      <time>{post.data.date.toISOString().slice(0, 10)}</time>
+      {post.data.tags.map((tg) => <span class="mono-chip">{tg}</span>)}
+    </p>
+    <Content />
+  </article>
+</BaseLayout>
+<style>
+  .post { max-width: 680px; margin: 0 auto; padding-top: 24px; }
+  .post h1 { font-size: 36px; margin: 16px 0 12px; }
+  .back { font-size: 13.5px; color: var(--text-3); }
+  .back:hover { color: var(--ink); text-decoration: underline; }
+  .meta { display: flex; gap: 10px; align-items: baseline; color: var(--text-3); font-size: 14px; margin-bottom: 32px; }
+</style>
