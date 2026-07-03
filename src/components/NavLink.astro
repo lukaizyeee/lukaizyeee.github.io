@@ -8,6 +8,7 @@ const { href, label, active = false } = Astro.props;
   .nav-link {
     font-size: 13.5px; font-weight: 550; color: var(--text-2);
     position: relative; padding-bottom: 3px;
+    white-space: nowrap;
   }
   .nav-link::after {
     content: ''; position: absolute; left: 0; bottom: 0;

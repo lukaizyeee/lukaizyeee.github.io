@@ -3,7 +3,6 @@
 set -euo pipefail
 EXPECTED=(
   index.html
-  dev/components/index.html
   blog/index.html
   zh/blog/index.html
   blog/hello-astro/index.html
@@ -31,4 +30,5 @@ for f in "${EXPECTED[@]}"; do
   if [ ! -f "dist/$f" ]; then echo "MISSING dist/$f"; missing=1; fi
 done
 [ "$missing" -eq 0 ] && echo "OK: ${#EXPECTED[@]} routes present"
+if [ -d dist/dev ]; then echo "dev pages leaked into production build"; exit 1; fi
 exit "$missing"

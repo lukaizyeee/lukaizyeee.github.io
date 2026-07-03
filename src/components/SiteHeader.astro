@@ -23,9 +23,11 @@ const items = [
 </header>
 <style>
   .site-header {
-    display: flex; justify-content: space-between; align-items: center;
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+    row-gap: 8px;
     max-width: 960px; margin: 0 auto; padding: 24px 24px 20px;
   }
-  .logo { font-family: var(--font-serif); font-weight: 700; font-size: 17px; }
-  nav { display: flex; gap: 28px; align-items: center; }
+  .logo { font-family: var(--font-serif); font-weight: 700; font-size: 17px; white-space: nowrap; }
+  nav { display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
+  @media (max-width: 480px) { nav { gap: 14px 18px; } }
 </style>
