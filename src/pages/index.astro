@@ -18,8 +18,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <BaseLayout locale="en" title="Zihao Zhang — AI systems" description="Undergrad at SJTU building reliable AI systems, heading toward OS × AI." altHref="/zh/">
   <CascadeGroup>
     <p class="kicker">AI SYSTEMS · SJTU ECE '28 · SHANGHAI</p>
-    <h1 class="headline">Building AI systems that hold up — heading toward
-      <CircleAnnotation delay={1150}>OS × AI</CircleAnnotation></h1>
+    <h1 class="headline">Building AI systems that hold up — heading toward{' '}<CircleAnnotation delay={1150}>OS × AI</CircleAnnotation></h1>
     <p class="sub">I'm an undergrad at Shanghai Jiao Tong University. I build LLM pipelines with retrieval, evidence tracking and
       <span class="mono-chip mono-chip--outline">900+ regression tests</span>, and I care about making model behavior
       <span class="mono-chip">reliable</span>, <span class="mono-chip">controllable</span>, <span class="mono-chip">measurable</span>.</p>

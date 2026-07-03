@@ -19,8 +19,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <BaseLayout locale="zh" title="张子灏 — AI 系统" description="上海交通大学本科生，构建可靠的 AI 系统，走向 OS × AI。" altHref="/">
   <CascadeGroup>
     <p class="kicker">AI 系统 · 上海交大 ECE '28 · 上海</p>
-    <h1 class="headline">构建经得起考验的 AI 系统 — 走向
-      <CircleAnnotation delay={1150}>OS × AI</CircleAnnotation></h1>
+    <h1 class="headline">构建经得起考验的 AI 系统 — 走向{' '}<CircleAnnotation delay={1150}>OS × AI</CircleAnnotation></h1>
     <p class="sub">我是上海交通大学的本科生。我构建带检索与证据追踪的 LLM 流水线，配套
       <span class="mono-chip mono-chip--outline">900+ regression tests</span>，并在意让模型行为
       <span class="mono-chip">reliable</span>、<span class="mono-chip">controllable</span>、<span class="mono-chip">measurable</span>。</p>

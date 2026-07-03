@@ -10,7 +10,8 @@ const { delay = 0 } = Astro.props;
   </svg>
 </span>
 <style>
-  .anno { position: relative; white-space: nowrap; }
+  /* SVG 椭圆向两侧各出血约 10px，margin 给笔画让出空间，避免挤压相邻单词 */
+  .anno { position: relative; white-space: nowrap; margin-inline: .18em; }
   .anno svg {
     position: absolute; left: -10px; top: -10px;
     width: calc(100% + 20px); height: calc(100% + 20px);
