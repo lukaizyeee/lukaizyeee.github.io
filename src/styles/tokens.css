@@ -1,0 +1,20 @@
+/* src/styles/tokens.css — 色值与 spec §4.1 逐字一致，5 色相封顶 */
+:root {
+  --bg: #F7F4EE;
+  --surface: #CDCAE0;
+  --purple-mid: #8A82C9;
+  --accent: #5E6AD2;
+  --ink: #1C1917;
+  --card: #FFFFFF;
+  --text-2: #44403C;
+  --text-3: #78716C;
+  --border: #E7E2D8;
+
+  --font-serif: 'Source Serif 4 Variable', Georgia, 'Songti SC', 'Noto Serif CJK SC', serif;
+  --font-sans: 'Inter Variable', 'Helvetica Neue', 'PingFang SC', 'Noto Sans CJK SC', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', Menlo, monospace;
+
+  --ease-out: cubic-bezier(.21, .6, .35, 1);
+  --ease-draw: cubic-bezier(.55, .06, .35, .98);
+  --line: 1.5px;   /* 墨线统一粗细 */
+}
