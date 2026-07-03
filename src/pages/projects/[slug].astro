@@ -10,9 +10,12 @@ export async function getStaticPaths() {
 }
 const { project } = Astro.props;
 const { Content } = await render(project);
+const slug = project.id.split('/')[1];
+const zhTwin = await getCollection('projects', (e) => e.id === `zh/${slug}`);
+const altHref = zhTwin.length > 0 ? `/zh/projects/${slug}` : '/zh/projects';
 ---
 <BaseLayout locale="en" title={`${project.data.title} — Zihao Zhang`} description={project.data.summary}
-  altHref={`/zh/projects/${project.id.split('/')[1]}`}>
+  altHref={altHref}>
   <ReadingProgress />
   <article class="case-study">
     <h1>{project.data.title}</h1>

@@ -31,4 +31,8 @@ for f in "${EXPECTED[@]}"; do
 done
 [ "$missing" -eq 0 ] && echo "OK: ${#EXPECTED[@]} routes present"
 if [ -d dist/dev ]; then echo "dev pages leaked into production build"; exit 1; fi
+if [ -d dist/zh/blog ] && find dist/zh/blog -mindepth 2 -name index.html | grep -q .; then
+  echo "zh blog mirror pages leaked into build (blog must be single-canonical-URL)"
+  exit 1
+fi
 exit "$missing"
