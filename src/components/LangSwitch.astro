@@ -1,0 +1,17 @@
+---
+// src/components/LangSwitch.astro
+import type { Locale } from '../i18n/ui';
+interface Props { locale: Locale; altHref: string; }
+const { locale, altHref } = Astro.props;
+const label = locale === 'en' ? '中' : 'EN';
+---
+<a class="lang-switch" href={altHref} aria-label="Switch language">{label}</a>
+<style>
+  .lang-switch {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+    color: var(--accent); border: var(--line) solid var(--accent);
+    border-radius: 6px; padding: 3px 9px;
+    transition: all .2s var(--ease-out);
+  }
+  .lang-switch:hover { background: var(--accent); color: var(--card); }
+</style>

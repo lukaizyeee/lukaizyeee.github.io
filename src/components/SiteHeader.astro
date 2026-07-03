@@ -1,0 +1,31 @@
+---
+// src/components/SiteHeader.astro
+import NavLink from './NavLink.astro';
+import LangSwitch from './LangSwitch.astro';
+import { t, localePath, type Locale } from '../i18n/ui';
+interface Props { locale: Locale; altHref: string; }
+const { locale, altHref } = Astro.props;
+const tr = t(locale);
+const current = Astro.url.pathname;
+const items = [
+  { href: localePath(locale, '/projects'), label: tr('nav.projects') },
+  { href: localePath(locale, '/blog'), label: tr('nav.blog') },
+  { href: localePath(locale, '/now'), label: tr('nav.now') },
+  { href: localePath(locale, '/about'), label: tr('nav.about') },
+];
+---
+<header class="site-header">
+  <a class="logo" href={localePath(locale, '/')}>Zihao Zhang</a>
+  <nav>
+    {items.map((it) => <NavLink href={it.href} label={it.label} active={current.startsWith(it.href)} />)}
+    <LangSwitch locale={locale} altHref={altHref} />
+  </nav>
+</header>
+<style>
+  .site-header {
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 960px; margin: 0 auto; padding: 24px 24px 20px;
+  }
+  .logo { font-family: var(--font-serif); font-weight: 700; font-size: 17px; }
+  nav { display: flex; gap: 28px; align-items: center; }
+</style>

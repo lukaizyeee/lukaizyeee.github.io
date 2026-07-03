@@ -1,0 +1,19 @@
+---
+// src/components/SiteFooter.astro
+---
+<footer class="site-footer">
+  <span>© 2026 Zihao Zhang</span>
+  <span>
+    <a href="mailto:aizyeee@foxmail.com">aizyeee@foxmail.com</a> ·
+    <a href="https://github.com/aizyeee">GitHub</a>
+  </span>
+</footer>
+<style>
+  .site-footer {
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    max-width: 960px; margin: 64px auto 0; padding: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-3);
+  }
+  .site-footer a { color: var(--text-2); text-decoration: underline; }
+</style>
