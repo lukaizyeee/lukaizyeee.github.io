@@ -4,15 +4,18 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionRule from '../components/SectionRule.astro';
 import CornerFrame from '../components/CornerFrame.astro';
+import CascadeGroup from '../components/CascadeGroup.astro';
 const entry = (await getCollection('now')).find((e) => e.id === 'en')!;
 const { Content } = await render(entry);
 ---
 <BaseLayout locale="en" title="Now — Zihao Zhang" description="What I'm doing now." altHref="/zh/now">
-  <SectionRule no="03" title="Now" />
-  <CornerFrame>
-    <Content />
-    <p class="updated">Last updated · {entry.data.updated.toISOString().slice(0, 10)}</p>
-  </CornerFrame>
+  <CascadeGroup>
+    <SectionRule no="03" title="Now" />
+    <CornerFrame>
+      <Content />
+      <p class="updated">Last updated · {entry.data.updated.toISOString().slice(0, 10)}</p>
+    </CornerFrame>
+  </CascadeGroup>
 </BaseLayout>
 <style>
   .updated { font-family: var(--font-mono); font-size: 12px; color: var(--text-3); margin-top: 18px; }

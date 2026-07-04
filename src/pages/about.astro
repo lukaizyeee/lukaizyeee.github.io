@@ -3,20 +3,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionRule from '../components/SectionRule.astro';
 import InkButton from '../components/InkButton.astro';
+import CascadeGroup from '../components/CascadeGroup.astro';
 ---
 <BaseLayout locale="en" title="About — Zihao Zhang" description="About Zihao Zhang." altHref="/zh/about">
-  <SectionRule no="04" title="About" />
-  <div class="about">
-    <p>Placeholder bio — replaced in content phase. ECE undergrad at Shanghai Jiao Tong University (2024–2028), working toward AI systems and OS × AI research.</p>
-    <h2>Skills</h2>
-    <p class="chips">
-      <span class="mono-chip">C/C++</span><span class="mono-chip">Python</span><span class="mono-chip">Elm</span>
-      <span class="mono-chip mono-chip--outline">RAG</span><span class="mono-chip mono-chip--outline">pytest</span><span class="mono-chip mono-chip--outline">Linux/WSL</span>
-    </p>
-    <h2>Contact</h2>
-    <p><a href="mailto:aizyeee@foxmail.com">aizyeee@foxmail.com</a> · <a href="mailto:orzaizyeee@sjtu.edu.cn">orzaizyeee@sjtu.edu.cn</a> · <a href="https://github.com/aizyeee">GitHub</a></p>
-    <p class="dl"><InkButton href="/resume.pdf" label="Download résumé (PDF)" /></p>
-  </div>
+  <CascadeGroup>
+    <SectionRule no="04" title="About" />
+    <div class="about">
+      <p>Placeholder bio — replaced in content phase. ECE undergrad at Shanghai Jiao Tong University (2024–2028), working toward AI systems and OS × AI research.</p>
+      <h2>Skills</h2>
+      <p class="chips">
+        <span class="mono-chip">C/C++</span><span class="mono-chip">Python</span><span class="mono-chip">Elm</span>
+        <span class="mono-chip mono-chip--outline">RAG</span><span class="mono-chip mono-chip--outline">pytest</span><span class="mono-chip mono-chip--outline">Linux/WSL</span>
+      </p>
+      <h2>Contact</h2>
+      <p><a href="mailto:aizyeee@foxmail.com">aizyeee@foxmail.com</a> · <a href="mailto:orzaizyeee@sjtu.edu.cn">orzaizyeee@sjtu.edu.cn</a> · <a href="https://github.com/aizyeee">GitHub</a></p>
+      <p class="dl"><InkButton href="/resume.pdf" label="Download résumé (PDF)" /></p>
+    </div>
+  </CascadeGroup>
 </BaseLayout>
 <style>
   .about { max-width: 680px; display: grid; gap: 14px; }
