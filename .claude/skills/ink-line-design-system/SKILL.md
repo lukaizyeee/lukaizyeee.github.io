@@ -55,6 +55,18 @@ description: Use when building or extending any page/component on Zihao Zhang's 
 
 **圆角基准**（无统一变量，按元素类型分层，新组件照此选取，不要凭感觉定数）：交互卡片/按钮类（OffsetCard/InkButton）用 `10–12px` 柔和方框；小尺寸标签类（mono-chip/LangSwitch）用 `5–6px`；线条/结构性装饰元素（CornerFrame 的角标、下划线、标尺线、圈注 SVG）**不用圆角**，保持线条本身的锐利感——圆角只用于"有内部留白的容器"，不用于"线条本身"。
 
+### 静态底色 = 气质分层的主开关
+
+"位移+硬投影"是一套**手法**，不是 OffsetCard 组件的专属——PostList 就直接把它手写在 `<a>` 上而不用组件。同一手法只改静态底色就能拉开气质差异，同一页面里出现多种容器时优先靠这个维度分层，不要为了"看起来不一样"就发明新的 hover 语言：
+
+| 静态底色 | 气质 | 用在哪 |
+|---|---|---|
+| `--card` 白 | **实体感强**，"完整内容块" | 项目卡片（有摘要、tech chips、metrics） |
+| `--surface` 淡薰衣草 | 同强度但差异化 | 项目卡片交替底色（`order % 2 === 0`） |
+| `--bg` 米白（融入页面） | **轮廓感**，只靠描边勾勒 | 博客列表这类"轻量索引"条目 |
+
+选哪个看承载的内容分量——摘要 + 多标签 → `--card`/`--surface`；只有标题和元信息 → `--bg`。三者 hover 参数一致（`translate(-3px,-3px)` + `5px 5px 0 0 var(--ink)`，`.22s var(--ease-out)`）。
+
 ### CircleAnnotation 的关键实现约束（踩过的坑）
 
 `stroke-dasharray`/`stroke-dashoffset` **必须运行时用 `getTotalLength()` 精确设置**，不能硬编码估算长度——硬编码会在动画开始前泄漏一段笔画、且起笔位置错乱（真实周长和估算值不符时会露馅）。CSS 里保留一个明显偏大的兜底值（当前 600）防止 JS 执行前的样式闪现：
@@ -81,5 +93,6 @@ SVG 视觉出血约 10px 到容器外（笔画本身比文字略宽），给 `.a
 - 把 `--accent` 直接当小字文字色用（kicker、分类小标、元信息这类 ≤14px 紫色文字）→ 用 `--accent-ink`。`--accent` 是装饰色（按钮硬投影、hover 背景等），作小字文字色对比度不够 AA。
 - 给中文标题引入更"好看"的中文 webfont → 不要，系统字体栈是性能优先的刻意选择。
 - 新组件的悬停效果只变个颜色，没有位移/形变 → 参考 InkButton/OffsetCard 的"位移+硬投影"手法，悬停反馈应有实体动作感，不只是变色。
+- 想让新容器和已有卡片"气质有区别"就想发明新 hover 手法 → 先只换静态底色（`--card` / `--surface` / `--bg`）。同一"位移+硬投影"配三种底色能读出显著气质差异（实体 vs 轮廓），不必新造 CSS 规则。
 - 圈注或类似路径动画，图省事用固定数字当 `stroke-dasharray` → 必须 `getTotalLength()` 运行时取值。
 - 新页面/区块的进场动画各自触发（比如各自套一层 IntersectionObserver）→ 整页应共享一条 CascadeGroup 时间轴。
