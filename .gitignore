@@ -24,4 +24,7 @@ pnpm-debug.log*
 # personal files with PII (kept on disk, never committed)
 /张子灏_技术简历.pdf
 /自我介绍.md
+/内容维护指南.md
+/discussion.md
+/CHANGELOG.md
 .playwright-mcp/
