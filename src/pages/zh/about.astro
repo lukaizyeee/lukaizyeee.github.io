@@ -2,7 +2,6 @@
 // src/pages/zh/about.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionRule from '../../components/SectionRule.astro';
-import InkButton from '../../components/InkButton.astro';
 import CascadeGroup from '../../components/CascadeGroup.astro';
 ---
 <BaseLayout locale="zh" title="关于 — 张子灏" description="关于张子灏。" altHref="/about">
@@ -17,7 +16,6 @@ import CascadeGroup from '../../components/CascadeGroup.astro';
       </p>
       <h2>联系</h2>
       <p><a href="mailto:aizyeee@foxmail.com">aizyeee@foxmail.com</a> · <a href="mailto:orzaizyeee@sjtu.edu.cn">orzaizyeee@sjtu.edu.cn</a> · <a href="https://github.com/aizyeee">GitHub</a></p>
-      <p class="dl"><InkButton href="/resume.pdf" label="下载简历（PDF）" /></p>
     </div>
   </CascadeGroup>
 </BaseLayout>
@@ -26,5 +24,4 @@ import CascadeGroup from '../../components/CascadeGroup.astro';
   .about h2 { font-size: 22px; margin-top: 22px; }
   .about a { text-decoration: underline; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-  .dl { margin-top: 10px; }
 </style>

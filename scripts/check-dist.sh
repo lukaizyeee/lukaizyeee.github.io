@@ -20,7 +20,6 @@ EXPECTED=(
   about/index.html
   zh/about/index.html
   404.html
-  resume.pdf
   sitemap-index.xml
   robots.txt
   favicon.svg
