@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://lukaizyeee.github.io',
+  site: 'https://aizyeee.github.io',
   integrations: [sitemap()],
   // 悬停即预取全部站内链接（默认 hover 策略），点击时接近秒开
   prefetch: { prefetchAll: true },

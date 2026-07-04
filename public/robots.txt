@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://lukaizyeee.github.io/sitemap-index.xml
+Sitemap: https://aizyeee.github.io/sitemap-index.xml
