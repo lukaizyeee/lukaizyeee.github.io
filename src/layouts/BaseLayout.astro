@@ -15,7 +15,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <!-- 标签页标题固定为品牌名，不随页面/语言变化；title prop 仍用于 og:title 等分享元数据 -->
+    <title>Zihao Zhang</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
