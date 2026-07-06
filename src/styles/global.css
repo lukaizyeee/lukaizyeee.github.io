@@ -29,8 +29,12 @@ code, pre { font-family: var(--font-mono); }
   border-radius: 5px;
   white-space: nowrap;
   border: var(--line) solid var(--ink);
+  margin-inline: .35em;   /* chip「入侵」正文高亮时，与前后文字/标点留出呼吸空间，不贴死 */
 }
 .mono-chip--outline { background: var(--card); }
+/* 专用 chip 行（flex + gap）里间距由 gap 统一给，去掉自带的水平外边距——
+   否则会和 gap 叠加、且首个 chip 会相对容器左缘（及上方文字）缩进错位。 */
+.chips .mono-chip, .meta .mono-chip { margin-inline: 0; }
 
 /* 动效全局降级：spec §4.4 */
 @media (prefers-reduced-motion: reduce) {

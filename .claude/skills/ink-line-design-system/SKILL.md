@@ -37,10 +37,13 @@ description: Use when building or extending any page/component on Zihao Zhang's 
 
 **等宽高亮 chip**（术语、量化数据用，如 `900+ regression tests`、`OS × AI`）：
 ```css
-.mono-chip { font-family: var(--font-mono); font-size: .85em; background: var(--surface); border: var(--line) solid var(--ink); padding: 2px 9px; border-radius: 5px; }
+.mono-chip { font-family: var(--font-mono); font-size: .85em; background: var(--surface); border: var(--line) solid var(--ink); padding: 2px 9px; border-radius: 5px; margin-inline: .35em; }
 .mono-chip--outline { background: var(--card); } /* 次级变体：换底色，不换描边——两种变体共用同一条墨色边框 */
+.chips .mono-chip, .meta .mono-chip { margin-inline: 0; } /* 专用 chip 行由 flex gap 控距，清掉自带外边距 */
 ```
 两种变体**都有墨色描边**，只用底色（`--surface` 紫 / `--card` 白）区分强调层级，边框本身不作为差异维度——否则在 `OffsetCard` 的 `lavender` 变体上会出现"紫底 chip 无边框、白底 chip 有边框"的不对称观感（紫底 chip 会和卡片背景糊在一起，白底 chip 却被强描边勾出来）。
+
+chip 有两种出场方式，间距来源不同：**内联进正文**做高亮时（如 hero 的 `.sub`），靠 `margin-inline: .35em` 和前后文字/标点留呼吸空间，否则会紧贴成一团；**专用 chip 行**（`.chips`/`.meta` 这类 flex 容器）里间距由 `gap` 统一给，必须把 chip 自带的 `margin-inline` 清零，否则和 gap 叠加、且首个 chip 会相对容器左缘缩进错位。
 
 ## 线条语言组件（签名 vs 配角）
 
